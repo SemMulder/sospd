@@ -10,6 +10,7 @@
 #include <array>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <boost/intrusive/list.hpp>
 #include <boost/intrusive/slist.hpp>
 #include <boost/intrusive/options.hpp>

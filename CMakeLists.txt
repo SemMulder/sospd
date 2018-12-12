@@ -12,7 +12,7 @@ project(SOS_OPT)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 set(SOS_OPT_VERSION_MAJOR "1")
 set(SOS_OPT_VERSION_MINOR "1")
-set(SOS_OPT_VERSION_PATCH "0")
+set(SOS_OPT_VERSION_PATCH "1")
 set(SOS_OPT_VERSION "${SOS_OPT_VERSION_MAJOR}.${SOS_OPT_VERSION_MINOR}.${SOS_OPT_VERSION_PATCH}")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
@@ -141,4 +141,3 @@ add_library(sos-opt STATIC ${lib-sources})
 add_subdirectory(thirdparty)
 add_subdirectory(experiments)
 add_subdirectory(test)
-
