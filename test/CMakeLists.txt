@@ -1,7 +1,4 @@
-set(test-sources
-    "test-higher-order-energy.cpp"
-    "test-submodular-ibfs.cpp"
-)
+set(test-sources)
 
 ###
 ### Unit test executable

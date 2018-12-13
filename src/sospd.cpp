@@ -248,7 +248,6 @@ void SoSPD<Flow>::SetupGraph(Flow& crf) {
 
 template <typename Flow>
 void SoSPD<Flow>::SetupAlphaEnergy(Flow& crf) {
-    typedef int32_t Assgn;
     const size_t n = m_labels.size();
     crf.ClearUnaries();
     crf.AddConstantTerm(-crf.GetConstantTerm());

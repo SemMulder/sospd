@@ -20,6 +20,8 @@ inline std::unique_ptr<FlowSolver> FlowSolver::GetSolver(const SubmodularIBFSPar
             return FlowPtr{ new SourceIBFS{} };
         case Alg::parametric:
             return FlowPtr{ new ParametricIBFS{} };
+        default:
+            ASSERT(false);
     }
 }
 

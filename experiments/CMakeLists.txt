@@ -1,5 +1,0 @@
-add_subdirectory(stereo)
-add_subdirectory(denoising)
-add_subdirectory(example)
-add_subdirectory(binary-denoising)
-add_subdirectory(optical-flow)

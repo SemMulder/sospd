@@ -34,3 +34,7 @@ bisect.sh
 *.ppm
 *.png
 *.pgm
+
+.idea
+cmake-build-debug
+

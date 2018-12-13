@@ -444,8 +444,8 @@ inline REAL SoSGraph::IBFSEnergyTableClique::ExchangeCapacity(size_t u_idx, size
 }
 
 inline void SoSGraph::IBFSEnergyTableClique::Push(size_t u_idx, size_t v_idx, REAL delta) {
-    ASSERT(u_idx >= 0 && u_idx < this->m_nodes.size());
-    ASSERT(v_idx >= 0 && v_idx < this->m_nodes.size());
+    ASSERT(u_idx < this->m_nodes.size());
+    ASSERT(v_idx < this->m_nodes.size());
     m_alpha_Ci[u_idx] += delta;
     m_alpha_Ci[v_idx] -= delta;
     const size_t n = this->m_nodes.size();
