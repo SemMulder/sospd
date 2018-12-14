@@ -6,6 +6,7 @@
 template <typename Flow>
 SoSPD<Flow>::SoSPD(const MultilabelEnergy* energy)
     : m_energy(energy),
+    m_ibfs(SubmodularIBFSParams()),
     m_num_labels(energy->numLabels()),
     m_labels(energy->numVars(), 0),
     m_fusion_labels(energy->numVars(), 0),
@@ -68,7 +69,7 @@ void SoSPD<Flow>::InitialDual() {
 		REAL energy = c.energy(labelBuf);
         m_dual.emplace_back(k*m_num_labels, 0);
 		LambdaAlpha& lambda_a = m_dual.back();
-        
+
         ASSERT(energy >= 0);
         REAL avg = energy / k;
         int remainder = energy % k;
@@ -148,7 +149,7 @@ void SoSPD<Flow>::PreEditDual(Flow& crf) {
             current_lambda[i] = dualVariable(lambda_a, i, current_labels[i]);
             fusion_lambda[i] = dualVariable(lambda_a, i, fusion_labels[i]);
         }
-        
+
         // Compute costs of all fusion assignments
         {
             Assgn last_gray = 0;
@@ -224,7 +225,7 @@ template <typename Flow>
 REAL SoSPD<Flow>::ComputeHeightDiff(VarId i, Label l1, Label l2) const {
     REAL ret = m_energy->unary(i, l1) - m_energy->unary(i, l2);
     for (const auto& p : m_node_clique_list[i]) {
-        ret += dualVariable(p.first, p.second, l1) 
+        ret += dualVariable(p.first, p.second, l1)
             - dualVariable(p.first, p.second, l2);
     }
     return ret;
@@ -466,13 +467,13 @@ REAL& SoSPD<Flow>::dualVariable(int alpha, VarId i, Label l) {
 }
 
 template <typename Flow>
-REAL SoSPD<Flow>::dualVariable(const LambdaAlpha& lambdaAlpha, 
+REAL SoSPD<Flow>::dualVariable(const LambdaAlpha& lambdaAlpha,
         VarId i, Label l) const {
     return lambdaAlpha[i*m_num_labels+l];
 }
 
 template <typename Flow>
-REAL& SoSPD<Flow>::dualVariable(LambdaAlpha& lambdaAlpha, 
+REAL& SoSPD<Flow>::dualVariable(LambdaAlpha& lambdaAlpha,
         VarId i, Label l) {
     return lambdaAlpha[i*m_num_labels+l];
 }

@@ -198,6 +198,7 @@ class SoSGraph {
                 , state(NodeState::N)
                 , dis(std::numeric_limits<int>::max())
                 , parent_arc()
+                , parent(INT16_MIN)
                 , cliques() { }
         };
 
