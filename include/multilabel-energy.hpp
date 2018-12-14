@@ -46,6 +46,7 @@ class MultilabelEnergy {
          * length max_label
          */
         void addUnaryTerm(VarId i, const std::vector<REAL>& coeffs);
+        void addUnaryTerm(VarId i, const REAL *coeffs);
 
         /** Add a clique function to the energy
          *
@@ -194,6 +195,13 @@ inline void MultilabelEnergy::addUnaryTerm(VarId i,
     ASSERT(i < m_numVars);
     ASSERT(Label(coeffs.size()) == m_maxLabel);
     for (Label l = 0; l < coeffs.size(); ++l)
+        m_unary[i][l] += coeffs[l];
+}
+
+inline void MultilabelEnergy::addUnaryTerm(VarId i,
+                                           const REAL *coeffs) {
+    ASSERT(i < m_numVars);
+    for (Label l = 0; l < m_maxLabel; ++l)
         m_unary[i][l] += coeffs[l];
 }
 
