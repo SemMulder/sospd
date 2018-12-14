@@ -38,20 +38,15 @@ set(lib-sources ${lib-sources})
 ### Build configuration
 ###
 
-# GCC settings
-#
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g")
-set(CMAKE_CXX_FLAGS_DEBUG "-g")
-set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os")
-set(GCC_WARNING_FLAGS "-Wall -Wextra -pedantic -Wno-missing-braces -Woverloaded-virtual -Wno-unused-parameter")
-set(CMAKE_CXX_FLAGS "--std=c++11 ${GCC_WARNING_FLAGS} ${CMAKE_CXX_FLAGS}")
-
 ###
 ### Target: libsos-opt
 ###
 
 add_library(sos-opt STATIC ${lib-sources})
+target_compile_features(sos-opt PUBLIC cxx_std_11)
+set_target_properties(sos-opt PROPERTIES
+        CXX_EXTENSIONS OFF
+)
 
 
 ###
