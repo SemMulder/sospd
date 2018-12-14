@@ -310,7 +310,11 @@ inline void SoSGraph::ResetFlow() {
     if (s == -1) {
         s = m_num_nodes; t = m_num_nodes + 1;
         m_nodes.push_back(Node(s));
+        m_phi_si.push_back(0);
+        m_phi_it.push_back(0);
         m_nodes.push_back(Node(t));
+        m_phi_si.push_back(0);
+        m_phi_it.push_back(0);
     }
     // reset distance, state and parent
     for (int i = 0; i < m_num_nodes + 2; ++i) {
