@@ -435,7 +435,7 @@ void SoSPD<Flow>::Solve(int niters) {
         InitialNodeCliqueList();
     }
 	#ifdef PROGRESS_DISPLAY
-		REAL energy = m_energy->ComputeEnergy(m_labels);
+		REAL energy = m_energy->computeEnergy(m_labels);
 		std::cout << "Iteration " << m_iter << ": " << energy << std::endl;
 	#endif
 	bool labelChanged = true;
@@ -449,7 +449,7 @@ void SoSPD<Flow>::Solve(int niters) {
         this_iter++;
         m_iter++;
 		#ifdef PROGRESS_DISPLAY
-			energy = m_energy->ComputeEnergy(m_labels);
+			energy = m_energy->computeEnergy(m_labels);
 			std::cout << "Iteration " << m_iter << ": " << energy << std::endl;
 		#endif
 	}
